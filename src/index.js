@@ -43,7 +43,7 @@ export default class Game {
         this.startGame();
       }
 
-      if (event.key === "f") {
+      if (event.code === 'KeyF') {
         if (this.fullScreen) {
           this.fullScreen = false;
           document.exitFullscreen();
