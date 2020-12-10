@@ -39,7 +39,9 @@ export default class Game {
   init() {
     window.addEventListener('resize', () => this.onResize());
     window.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " " && !this.inGame) {
+      console.log(this.inGame)
+
+      if ((event.key === "Enter" || event.key === " ") && !this.inGame) {
         this.startGame();
       }
 
