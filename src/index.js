@@ -31,14 +31,33 @@ export default class Game {
     this.score = 0;
     this.inGame = true;
 
+    this.fullScreen = false;
+
     this.init();
   }
 
   init() {
-    window.addEventListener("resize", (x) => this.onResize());
+    window.addEventListener('resize', () => this.onResize());
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " " && !this.inGame) {
+        this.startGame();
+      }
+
+      if (event.key === "f") {
+        if (this.fullScreen) {
+          this.fullScreen = false;
+          document.exitFullscreen();
+        } else {
+          this.fullScreen = true;
+          document.body.requestFullscreen();
+        }
+      }
+    });
+
     this.onResize();
 
     this.startButton.addEventListener('click', () => this.startGame())
+
     this.startGame();
 
     requestAnimationFrame((time) => this.update(time));
@@ -75,7 +94,7 @@ export default class Game {
   }
 
   saveResult() {
-    if (this.score > this.resultFromStorage) {
+    if (this.score > this.resultFromStorage || this.resultFromStorage === null) {
       localStorage.setItem('asteroids_best', this.score);
       this.resultFromStorage = this.score;
     }
@@ -139,7 +158,6 @@ export default class Game {
           ),
         },
         create: this.createObject.bind(this),
-        // addScore: this.addScore.bind(this)
       });
 
       this.createObject(asteroid, "asteroids");

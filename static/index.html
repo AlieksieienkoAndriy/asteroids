@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+  <div id="content">
+    <div id="hud">
+      <div id="score" class="score"></div>
+      <div class="info">
+        Use ARROWS to MOVE<br>
+        Use SPACE to SHOOT<br>
+        Use F to enable fullscreen
+      </div>
+    </div>
+    <div id="end-game">
+      <p>Game over</p>
+      <p id="result" class="text"></p>
+      <p id="best-result" class="text"></p>
+      <button id="start" type="button">Try again</button>
+    </div>
+    <canvas id="canvas"></canvas>
+  </div>
+  <script src="scripts/game.js"></script>
+</body>
+
+</html>
